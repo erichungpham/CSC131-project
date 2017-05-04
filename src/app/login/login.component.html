@@ -1,0 +1,15 @@
+﻿<p>
+  {{ loginHeader }}
+</p>
+
+    <p>
+        username: <input [(ngModel)] = "user.name" />
+        {{ user.name }}
+    </p>
+
+<p>
+        password: <input type = "password" [(ngModel)] = "user.password" />
+        {{ user.password }}
+</p>
+
+<button (click) = "auth()">Login</button>
