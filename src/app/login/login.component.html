@@ -3,13 +3,11 @@
 </p>
 
     <p>
-        username: <input [(ngModel)] = "user.name" />
-        {{ user.name }}
+        username: <input type="text" placeholder= "Enter Username" [(ngModel)] = "user.name" />
     </p>
 
 <p>
-        password: <input type = "password" [(ngModel)] = "user.password" />
-        {{ user.password }}
+        password: <input type = "password" placeholder = "Enter password" [(ngModel)] = "user.password" />
 </p>
 
 <button (click) = "auth()">Login</button>
