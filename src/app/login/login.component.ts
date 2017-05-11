@@ -13,16 +13,16 @@ export class LoginComponent implements OnInit {
       password: "password"
   };
 
-  constructor() { }
-  
-    auth(){
-      if(this.user.name == 'admin' && this.user.password == 'password'){
+  auth(){
+  if(this.user.name == 'admin' && this.user.password == 'password'){
           alert('you are logged in');
-	  }
+  }
       else{
           alert('wrong login');
       }
   }
+
+  constructor() { }
 
   ngOnInit() {
   }
