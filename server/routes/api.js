@@ -15,4 +15,40 @@ else{
 }
 });
 
+router.post('/employee', (req, res) => {
+	var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: 'root',
+	database: 'csc131-project'
+});
+
+connection.connect();
+
+var test = {
+	fname:req.body.fname,
+	lname:req.body.lname,
+	username:req.body.username
+};
+
+var query = connection.query('insert into employee set ?', test, function(err, result){
+	//console.log(query.sql);
+	console.error(err);
+	//console.log(result);
+	if(result.affectedRows >= 1){
+		test.id = result.insertId;
+		res.json(test);
+	}else{
+		res.send("could not post")
+	}
+});
+
+
+	
+	
+});	
+
+
 module.exports = router;
