@@ -44,10 +44,6 @@ var query = connection.query('insert into employee set ?', test, function(err, r
 		res.send("could not post")
 	}
 });
-
-
-	
-	
 });	
 
 
