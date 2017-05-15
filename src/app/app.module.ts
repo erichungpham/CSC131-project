@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { EmpListComponent } from './emp-list/emp-list.component';
 import { EmpInfoComponent } from './emp-info/emp-info.component';
 
+import {EmployeeService } from './employee.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,7 @@ import { EmpInfoComponent } from './emp-info/emp-info.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,36 +17,40 @@ router.get('/employee/:id?', (req, res) => {
         res.status(400).send('Please enter a valid employee ID.');
 
     } else {
-        connection.connect();
+
         var query = connection.query('select id, fname, lname from employee where id = ?', id, function(err, result) {
             if (result == '') {
                 res.status(404).send('Please enter a valid employee ID.');
             } else {
-                res.json(result);
+                res.json(result[0]);
             }
-            console.log(query.sql);
+            console.log(result.length + ':' + query.sql);
         });
     }
+
+
 });
 
 router.get('/employee/list', (req, res) => {
-    connection.connect();
+
     var query = connection.query('select id, fname, lname from employee', function(err, result) {
         res.json(result);
     });
+
 });
 
 router.get('/employee/managed/:id?', (req, res) => {
     var superV = req.params.id;
-    connection.connect();
+
     var query = connection.query('select * from employee where superV = ?', superV, function(err, result) {
         res.json(result);
         console.log(query.sql);
     });
+
 });
 
 router.post('/employee', (req, res) => {
-    connection.connect();
+
 
     var employee = createEmployee(req.body);
 
@@ -61,6 +65,7 @@ router.post('/employee', (req, res) => {
             res.status(500).send("There was a sever error.");
         }
     });
+
 });
 
 router.put('/employee', (req, res) => {
@@ -76,7 +81,8 @@ router.put('/employee', (req, res) => {
             } else {
                 res.json(employee); //maybe doa  query to show only updated content
             }
-        })
+        });
+
 });
 
 var createEmployee = function(requestbody) {
