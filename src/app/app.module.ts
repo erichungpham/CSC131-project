@@ -7,22 +7,25 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EmpListComponent } from './emp-list/emp-list.component';
 import { EmpInfoComponent } from './emp-info/emp-info.component';
+import { TableComponent } from './table/table.component';
 
-import {EmployeeService } from './employee.service';
+import { EmployeeService } from './employee.service';
+import { LoginService } from './login.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EmpListComponent,
-    EmpInfoComponent
+    EmpInfoComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

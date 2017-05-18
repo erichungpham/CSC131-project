@@ -7,12 +7,22 @@ export class EmployeeService {
 
   constructor(private http: Http) { }
 
-  getEmployee(id){
-    return this.http.get(`/api/employee/${id}`)
+  getEmployee(id) {
+    return this.http.get(`/api/employee/details/${id}`)
       .map((res: Response) => res.json());
   }
 
-  postEmployee(employee){
+      getManagedEmployees(id) {
+    return this.http.get(`/api/employee/managed/${id}`)
+      .map((res: Response) => res.json());
+  }
+
+    getEmployeeList() {
+    return this.http.get(`/api/employee/list`)
+      .map((res: Response) => res.json());
+  }
+
+  postEmployee(employee) {
     return this.http.post(`/api/employee/`, employee)
       .map((res: Response) => res.json());
   }

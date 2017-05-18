@@ -1,69 +1,52 @@
-<!DOCTYPE html>
-<html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body>
-
-<div ng-app="myApp" ng-controller="employeeCtrl"> 
-
-<table>
-  <tr>
-    <th>id</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Middle initial</th>
-    <th>Personal Email</th>
-    <th>Direct Number</th>
-    <th>Cell Number</th>
-    <th>Date Created</th>
-    <th>Division</th>
-    <th>Date Expire</th>
-    <th>Fax</th>
-    <th>Employee ID</th>
-    <th>Email Group</th>
-    <th>Home Number</th>
-    <th>Title</th>
-    <th>Manager</th>
-    <th>Notary ID</th>
-    <th>Office</th>
-    <th>Security</th>
-    <th>Status</th>
-    <th>Supervisor</th>
-    <th>Username</th>
-  </tr>
-  <tr ng-repeat="employee in emp-info">
-    <td>{{ employee.id }}</td>
-    <td>{{ employee.fname }}</td>
-    <td>{{ employee.lname }}</td>
-    <td>{{ employee.middle }}</td>
-    <td>{{ employee.email_personal }}</td>
-    <td>{{ employee.direct_number }}</td>
-    <td>{{ employee.cell_number }}</td>
-    <td>{{ employee.date_create }}</td>
-    <td>{{ employee.division }}</td>
-    <td>{{ employee.date_eemployeepire }}</td>
-    <td>{{ employee.faemployee }}</td>
-    <td>{{ employee.emp_ID }}</td>
-    <td>{{ employee.email_group }}</td>
-    <td>{{ employee.home_number }}</td>
-    <td>{{ employee.title }}</td>
-    <td>{{ employee.man }}</td>
-    <td>{{ employee.not_ID }}</td>
-    <td>{{ employee.office }}</td>
-    <td>{{ employee.security }}</td>
-    <td>{{ employee.status }}</td>
-    <td>{{ employee.superV }}</td>
-    <td>{{ employee.username }}</td>
-  </tr>
-</table>
+<div>
+    <table class="table-bordered">
+        <tr>
+            <th>id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Middle initial</th>
+            <th>Personal Email</th>
+            <th>Direct Number</th>
+            <th>Cell Number</th>
+            <th>Date Created</th>
+            <th>Division</th>
+            <th>Date Expire</th>
+            <th>Fax</th>
+            <th>Employee ID</th>
+            <th>Email Group</th>
+            <th>Home Number</th>
+            <th>Title</th>
+            <th>Manager</th>
+            <th>Notary ID</th>
+            <th>Office</th>
+            <th>Security</th>
+            <th>Status</th>
+            <th>Supervisor</th>
+            <th>Username</th>
+        </tr>
+        <tr *ngFor="let employee of employees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.fname }}</td>
+            <td>{{ employee.lname }}</td>
+            <td>{{ employee.middle }}</td>
+            <td>{{ employee.email_personal }}</td>
+            <td>{{ employee.direct_number }}</td>
+            <td>{{ employee.cell_number }}</td>
+            <td>{{ employee.date_create }}</td>
+            <td>{{ employee.division }}</td>
+            <td>{{ employee.date_eemployeepire }}</td>
+            <td>{{ employee.faemployee }}</td>
+            <td>{{ employee.emp_ID }}</td>
+            <td>{{ employee.email_group }}</td>
+            <td>{{ employee.home_number }}</td>
+            <td>{{ employee.title }}</td>
+            <td>{{ employee.man }}</td>
+            <td>{{ employee.not_ID }}</td>
+            <td>{{ employee.office }}</td>
+            <td>{{ employee.security }}</td>
+            <td>{{ employee.status }}</td>
+            <td>{{ employee.superV }}</td>
+            <td>{{ employee.username }}</td>
+        </tr>
+    </table>
 </div>
-
-<script>
-var app = angular.module('myApp', []);
-app.controller('employeeCtrl', function($scope, $http) {
-    $http.get("employee.php")
-    .then(function (response) {$scope.names = response.data.records;});
-});
-</script>
-
-</body>
-</html>

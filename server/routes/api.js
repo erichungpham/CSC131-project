@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
     database: 'csc131-project'
 });
 /* GET api listing. */
-router.get('/employee/:id?', (req, res) => {
+router.get('/employee/details/:id?', (req, res) => {
     var id = req.params.id;
     if (id == null) {
         // var query = connection.query('select * from employee', function(err, result) {
@@ -31,14 +31,14 @@ router.get('/employee/:id?', (req, res) => {
 
 });
 
-router.get('/list', (req, res) => { //employee/list redirects to invalid id
+router.get('/employee/list', (req, res) => { //employee/list redirects to invalid id
     var query = connection.query('select id, fname, lname from employee', function(err, result) {
         res.json(result);
     });
 
 });
 
-router.get('/managed/:id?', (req, res) => {
+router.get('/employee/managed/:id?', (req, res) => {
     var superV = req.params.id;
 
     var query = connection.query('select * from employee where superV = ?', superV, function(err, result) {
@@ -50,13 +50,12 @@ router.get('/managed/:id?', (req, res) => {
 
 router.post('/employee', (req, res) => {
 
-
     var employee = createEmployee(req.body);
 
     var query = connection.query('insert into employee set ?', employee, function(err, result) {
-        //console.log(query.sql);
+        console.log(query.sql);
         //console.error(err);
-        //console.log(result);
+        console.log(result);
         if (result.affectedRows >= 1) {
             employee.id = result.insertId;
             res.status(201).json(employee);

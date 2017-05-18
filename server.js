@@ -14,10 +14,13 @@ const app = express();
 app.use(morgan('dev'));
 
 // Parsers for POST data
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Point static path to dist
+
+// Point static path to dist, css and js
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
