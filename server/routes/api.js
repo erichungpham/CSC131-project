@@ -31,15 +31,14 @@ router.get('/employee/:id?', (req, res) => {
 
 });
 
-router.get('/employee/list', (req, res) => {
-
+router.get('/list', (req, res) => { //employee/list redirects to invalid id
     var query = connection.query('select id, fname, lname from employee', function(err, result) {
         res.json(result);
     });
 
 });
 
-router.get('/employee/managed/:id?', (req, res) => {
+router.get('/managed/:id?', (req, res) => {
     var superV = req.params.id;
 
     var query = connection.query('select * from employee where superV = ?', superV, function(err, result) {
